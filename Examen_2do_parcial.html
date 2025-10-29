@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViveGDL - Descubre Guadalajara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+        }
+        
+        .login-box h1 {
+            color: #2563eb;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        .login-box p {
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            color: #374151;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        
+        .btn-login {
+            width: 100%;
+            background-color: #2563eb;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .btn-login:hover {
+            background-color: #1d4ed8;
+        }
+        
+        .header {
+            background-color: #2563eb;
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        
+        .btn-logout {
+            background-color: #ef4444;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .btn-logout:hover {
+            background-color: #dc2626;
+        }
+        
+        .hero {
+            background-color: #3b82f6;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            margin: 0 0 10px 0;
+            font-size: 2em;
+        }
+        
+        .hero p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+        
+        .places-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: scale(1.05);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card h3 {
+            margin: 0 0 10px 0;
+            color: #111827;
+            font-size: 1.3em;
+        }
+        
+        .card p {
+            margin: 0 0 15px 0;
+            color: #6b7280;
+            font-size: 0.95em;
+        }
+        
+        .rating {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .footer p {
+            margin: 0;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container">
+        <div class="login-box">
+            <h1>ViveGDL</h1>
+            <p>Descubre Guadalajara</p>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Usuario</label>
+                    <input type="text" id="username" placeholder="admin">
+                </div>
+
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="password" placeholder="admin">
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Iniciar sesión
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Page -->
+    <div id="mainPage" class="hidden">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <h1>ViveGDL</h1>
+                <button onclick="logout()" class="btn-logout">
+                    Salir
+                </button>
+            </div>
+        </div>
+
+        <!-- Title -->
+        <div class="hero">
+            <h2>Lugares de Guadalajara</h2>
+            <p>Descubre los mejores sitios de la ciudad</p>
+        </div>
+
+        <!-- Places Cards -->
+        <div class="places-container">
+            <div id="placesGrid" class="places-grid">
+                <!-- Cards here -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2024 ViveGDL - Guadalajara, Jalisco</p>
+        </div>
+    </div>
+
+    <script>
+        // Places data
+        const places = [
+            {
+                name: "Centro Histórico",
+                description: "Corazón de Guadalajara con arquitectura colonial",
+                category: "cultural",
+                rating: 4.8,
+                image: "imagenes/centro_historico_gdl.jpg"
+            },
+            {
+                name: "Tlaquepaque",
+                description: "Pueblo mágico famoso por su cerámica",
+                category: "cultural",
+                rating: 4.7,
+                image: "imagenes/tlaquepaque.jpg"
+            },
+            {
+                name: "Hospicio Cabañas",
+                description: "Patrimonio UNESCO con murales de Orozco",
+                category: "arte",
+                rating: 4.9,
+                image: "imagenes/hospicio_cabanas.jpg"
+            },
+            {
+                name: "Tequila",
+                description: "Cuna del tequila y paisajes agaveros",
+                category: "cultural",
+                rating: 4.8,
+                image: "imagenes/tequila.jpeg"
+            },
+            {
+                name: "Lago de Chapala",
+                description: "El lago más grande de México",
+                category: "naturaleza",
+                rating: 4.6,
+                image: "imagenes/lago_de_chapala.png"
+            },
+            {
+                name: "Tonalá",
+                description: "Capital artesanal de Jalisco",
+                category: "cultural",
+                rating: 4.5,
+                image: "imagenes/Tonala.jpg"
+            },
+            {
+                name: "Catedral de Guadalajara",
+                description: "Símbolo icónico de Guadalajara",
+                category: "arte",
+                rating: 4.9,
+                image: "imagenes/Catedral_metropolitana_de_Guadalajara.jpg"
+            },
+            {
+                name: "Teatro Degollado",
+                description: "Teatro neoclásico histórico",
+                category: "arte",
+                rating: 4.8,
+                image: "imagenes/teatro_degollado.jpg"
+            },
+            {
+                name: "Mercado San Juan",
+                description: "Mercado tradicional y comida local",
+                category: "gastronomia",
+                rating: 4.7,
+                image: "imagenes/Mercado-San-Juan-de-Dios-1.jpg"
+            }
+        ];
+
+        // Show places
+        function renderPlaces() {
+            const grid = document.getElementById('placesGrid');
+            grid.innerHTML = '';
+            
+            places.forEach(place => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                card.innerHTML = `
+                    <img src="${place.image}" alt="${place.name}">
+                    <div class="card-content">
+                        <h3>${place.name}</h3>
+                        <p>${place.description}</p>
+                        <div class="rating">★ ${place.rating}</div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            
+            if (user === 'admin' && pass === 'admin') {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('mainPage').style.display = 'block';
+                renderPlaces();
+            } else {
+                alert('Usuario o contraseña incorrectos');
+            }
+        });
+
+        // Logout
+        function logout() {
+            document.getElementById('mainPage').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('loginForm').reset();
+        }
+    </script>
+</body>
+</html>
