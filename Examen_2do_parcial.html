@@ -206,7 +206,7 @@
 </head>
 <body class="bg-gray-100">
     
-    <!-- Login Page -->
+    
     <div id="loginPage" class="login-container">
         <div class="login-box">
             <h1>ViveGDL</h1>
@@ -230,9 +230,9 @@
         </div>
     </div>
 
-    <!-- Main Page -->
+    
     <div id="mainPage" class="hidden">
-        <!-- Header -->
+        
         <div class="header">
             <div class="header-content">
                 <h1>ViveGDL</h1>
@@ -242,27 +242,27 @@
             </div>
         </div>
 
-        <!-- Title -->
+      
         <div class="hero">
             <h2>Lugares de Guadalajara</h2>
             <p>Descubre los mejores sitios de la ciudad</p>
         </div>
 
-        <!-- Places Cards -->
+        
         <div class="places-container">
             <div id="placesGrid" class="places-grid">
-                <!-- Cards here -->
+                
             </div>
         </div>
 
-        <!-- Footer -->
+        
         <div class="footer">
             <p>© 2024 ViveGDL - Guadalajara, Jalisco</p>
         </div>
     </div>
 
     <script>
-        // Places data
+        
         const places = [
             {
                 name: "Centro Histórico",
@@ -329,7 +329,7 @@
             }
         ];
 
-        // Show places
+        
         function renderPlaces() {
             const grid = document.getElementById('placesGrid');
             grid.innerHTML = '';
@@ -351,7 +351,7 @@
             });
         }
 
-        // Login
+        
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const user = document.getElementById('username').value;
@@ -366,7 +366,7 @@
             }
         });
 
-        // Logout
+        
         function logout() {
             document.getElementById('mainPage').style.display = 'none';
             document.getElementById('loginPage').style.display = 'flex';
